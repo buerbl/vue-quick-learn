@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>axios（@修斯）使用</title>
+</head>
+
+<body>
+    <input type="button" value="get请求" class="get">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.1/axios.min.js"></script>
+    <script>
+        document.querySelector(".get").onclick = function () {
+            axios.get("https://www.tianqiapi.com/api/?version=v1&city=%E6%B5%8E%E5%8D%97")
+                .then(function (response) {
+                    console.log("成功了")
+                    console.log(response.data.errmsg)
+                }, function (err) {
+                    console.log("失败了")
+                    console.log(err)
+                })
+        }
+    </script>
+</body>
+
+</html>

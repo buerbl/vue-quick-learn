@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>axios与vue使用</title>
+</head>
+<body>
+    <div id="app">
+        <input type="button" value="get请求" @click="get">
+        {{rs}}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.1/axios.min.js"></script>
+    <script>
+   
+        var app = new Vue({
+            el : "#app",
+            data :{
+                rs:"结果",
+            },
+            methods:{
+                get:function(){
+                    var that = this;
+                    axios.get("https://www.tianqiapi.com/api/?version=v1&city=%E6%B5%8E%E5%8D%97")
+                    .then(function (response) {
+                        console.log("成功了");
+                        console.log(that.rs);
+                        that.rs = response.data.errmsg;
+                        console.log(response.data.errmsg);
+                    }, function (err) {
+                        console.log("失败了")
+                        console.log(err)
+                    })
+        
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
